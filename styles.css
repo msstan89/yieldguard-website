@@ -768,6 +768,11 @@ body {
   font-size: 0.75rem;
   line-height: 1.5;
   margin: 0;
+}
+
+.footer-brand p + p {
+  margin-top: 0.35rem;
+  color: rgba(255,255,255,0.4);
   max-width: 22rem;
 }
 
