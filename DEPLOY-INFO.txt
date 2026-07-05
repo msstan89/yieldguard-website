@@ -1,0 +1,24 @@
+YIELDGUARD — Deploy Info
+========================
+
+Site live: https://gleeful-pithivier-825570.netlify.app
+Parolă temporară: My-Drop-Site
+
+Email contact: contact@yieldguard.ro
+
+IMPORTANT — Claim în 60 minute (altfel site-ul dispare):
+https://app.netlify.com/drop/gleeful-pithivier-825570#drop_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3ODMyNDU5MTAsImV4cCI6MTc4MzI0OTUxMCwiaXNzIjoiTmV0bGlmeSIsInNlc3Npb25faWQiOiJjM2UzY2MwMC1iNjdmLTQ3NWMtYjNhMC1lZTY1NzMxNDQ2N2QifQ.gYoVn-Duv8QuvqDFYE8-NBCmtAKD_CLlDrHIazRSDpY
+
+După claim:
+- Site-ul devine permanent
+- Poți schimba numele (ex: yieldguard.netlify.app)
+- Poți lega domeniul yieldguard.ro
+
+Redeploy:
+export PATH="$HOME/.local/node/bin:$PATH"
+cd /Users/silviustan/yieldguard-website
+npx netlify-cli deploy --prod --dir=.
+
+Formular contact:
+- Folosește FormSubmit → contact@yieldguard.ro
+- La primul mesaj trimis, verifică inbox-ul și confirmă adresa
