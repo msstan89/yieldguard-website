@@ -87,6 +87,32 @@ body {
   gap: 0.75rem;
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--slate);
+  text-decoration: none;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.lang-switch:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.lang-switch--active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  pointer-events: none;
+}
+
 .nav-toggle {
   display: flex;
   flex-direction: column;

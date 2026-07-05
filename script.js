@@ -1,6 +1,25 @@
 const FORM_EMAIL = 'contact@yieldguard.ro';
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 
+const isRo = document.documentElement.lang?.startsWith('ro');
+const t = isRo
+  ? {
+      subject: (company) => `Solicitare mentenanță — ${company} — YieldGuard`,
+      formError: 'Trimiterea a eșuat. Contactați-ne direct la contact@yieldguard.ro.',
+      modalTitle: 'Solicitare primită',
+      modalDesc: 'Un reprezentant tehnic vă va contacta în maxim o zi lucrătoare.',
+      modalClose: 'Închide',
+      loading: 'Se trimite...',
+    }
+  : {
+      subject: (company) => `Maintenance schedule request — ${company} — YieldGuard`,
+      formError: 'Transmission failed. Please contact us directly at contact@yieldguard.ro.',
+      modalTitle: 'Inquiry received',
+      modalDesc: 'A technical representative will contact you within one business day.',
+      modalClose: 'Close',
+      loading: 'Processing...',
+    };
+
 const header = document.getElementById('header');
 const navToggle = document.getElementById('nav-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -9,6 +28,12 @@ const submitBtn = document.getElementById('submit-btn');
 const formError = document.getElementById('form-error');
 const successModal = document.getElementById('success-modal');
 const modalClose = document.getElementById('modal-close');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+
+if (modalTitle) modalTitle.textContent = t.modalTitle;
+if (modalDesc) modalDesc.textContent = t.modalDesc;
+if (modalClose) modalClose.textContent = t.modalClose;
 
 window.addEventListener('scroll', () => {
   header?.classList.toggle('scrolled', window.scrollY > 8);
@@ -63,7 +88,7 @@ contactForm?.addEventListener('submit', async (e) => {
         company: fd.get('company'),
         mw_installed: fd.get('mw'),
         site_location: fd.get('location'),
-        _subject: `Maintenance schedule request — ${fd.get('company')} — YieldGuard`,
+        _subject: t.subject(fd.get('company')),
         _template: 'table',
         _captcha: 'false',
       }),
@@ -74,7 +99,7 @@ contactForm?.addEventListener('submit', async (e) => {
     successModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   } catch {
-    formError.textContent = 'Transmission failed. Please contact us directly at contact@yieldguard.ro.';
+    formError.textContent = t.formError;
     formError.classList.remove('hidden');
   } finally {
     setLoading(false);
