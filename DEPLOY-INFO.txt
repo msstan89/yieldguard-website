@@ -1,24 +1,56 @@
-YIELDGUARD — Deploy Info
-========================
+YIELDGUARD — GitHub & Domeniu
+==============================
 
-Site live: https://gleeful-pithivier-825570.netlify.app
-Parolă temporară: My-Drop-Site
+GitHub repo:
+https://github.com/msstan89/yieldguard-website
 
 Email contact: contact@yieldguard.ro
 
-IMPORTANT — Claim în 60 minute (altfel site-ul dispare):
-https://app.netlify.com/drop/gleeful-pithivier-825570#drop_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3ODMyNDU5MTAsImV4cCI6MTc4MzI0OTUxMCwiaXNzIjoiTmV0bGlmeSIsInNlc3Npb25faWQiOiJjM2UzY2MwMC1iNjdmLTQ3NWMtYjNhMC1lZTY1NzMxNDQ2N2QifQ.gYoVn-Duv8QuvqDFYE8-NBCmtAKD_CLlDrHIazRSDpY
+---
+GITHUB PAGES (hosting gratuit)
+---
+Site GitHub Pages (după activare DNS):
+https://www.yieldguard.ro
+(sau temporar: https://msstan89.github.io/yieldguard-website/)
 
-După claim:
-- Site-ul devine permanent
-- Poți schimba numele (ex: yieldguard.netlify.app)
-- Poți lega domeniul yieldguard.ro
+---
+CONFIGURARE DNS pe gazduire.net
+---
+Intră în panoul domeniului yieldguard.ro → DNS / Zone DNS
 
-Redeploy:
-export PATH="$HOME/.local/node/bin:$PATH"
-cd /Users/silviustan/yieldguard-website
-npx netlify-cli deploy --prod --dir=.
+1) Pentru WWW (obligatoriu):
+   Tip:   CNAME
+   Host:  www
+   Valoare: msstan89.github.io
+   TTL:   3600 (sau Auto)
 
-Formular contact:
-- Folosește FormSubmit → contact@yieldguard.ro
-- La primul mesaj trimis, verifică inbox-ul și confirmă adresa
+2) Pentru yieldguard.ro fără www (redirect la www):
+   Tip:   A
+   Host:  @
+   Valoare: 185.199.108.153
+   (adaugă și: 185.199.109.153, 185.199.110.153, 185.199.111.153)
+
+   SAU dacă gazduire.net oferă redirect:
+   Redirect @ → https://www.yieldguard.ro
+
+3) Așteaptă 15 min – 48 ore propagare DNS.
+
+4) În GitHub → repo → Settings → Pages → verifică:
+   - Source: Deploy from branch → main → / (root)
+   - Custom domain: www.yieldguard.ro
+   - Bifează "Enforce HTTPS" când devine disponibil
+
+---
+FORMULAR CONTACT
+---
+FormSubmit trimite la contact@yieldguard.ro
+La primul mesaj, confirmă adresa din emailul FormSubmit.
+
+---
+ACTUALIZĂRI VIITOARE
+---
+git add .
+git commit -m "descriere modificare"
+git push
+
+GitHub Pages se actualizează automat în ~1-2 minute.
